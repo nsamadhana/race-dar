@@ -1,15 +1,15 @@
 {
-  "title": "Light, fast & responsive",
-  "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
+  "title": "Diversity, Equity, and Inclusion",
+  "text": "Racedar is a DEI social awareness tool designed to expose internal biases regarding race and color.",
   "section": [
     {
-      "title": "Why Antd?",
-      "content": "Ant Design is a React UI library that has a lot of easy-to-use components for building elegant UI.",
+      "title": "Why Racedar?",
+      "content": "Racedar is a fun and intuitive game that anyone can play.",
       "icon": "notes.svg"
     },
     {
-      "title": "Why styled-components?",
-      "content": "Styled Components gives you total control over your components.",
+      "title": "Is this a joke?",
+      "content": "No this is very serious.",
       "icon": "notes.svg"
     }
   ]
