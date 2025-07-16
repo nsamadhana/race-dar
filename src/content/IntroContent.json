@@ -1,13 +1,25 @@
 {
   "title": "Racedar",
-  "text": "\"There can only be one...\"",
+  "text": "Choose a color and start playing!",
   "button": [
     {
-      "title": "Play Racedar"
+      "title": "Yellow",
+      "color": "#FFFF00"
     },
     {
-      "title": "What is Racedar?",
-      "color": "#fff"
+      "title": "Brown1",
+      "color": "#CD853F"
+    }, 
+    {
+      "title": "Brown2",
+      "color": "#654321"
+    }, 
+    {
+      "title": "Black",
+      "color": "#ffff"
+    }, 
+    {
+      "title": "White"
     }
   ]
 }
