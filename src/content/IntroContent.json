@@ -4,22 +4,28 @@
   "button": [
     {
       "title": "Yellow",
-      "color": "#FFFF00"
+      "color": "#FFFF00",
+      "link": "/quiz"
     },
     {
       "title": "Brown1",
-      "color": "#CD853F"
+      "color": "#CD853F",
+      "link": "/quiz"
     }, 
     {
       "title": "Brown2",
-      "color": "#654321"
+      "color": "#654321",
+      "link": "/quiz"
     }, 
     {
       "title": "Black",
-      "color": "#ffff"
+      "color": "#ffff",
+      "link": "/quiz"
     }, 
     {
-      "title": "White"
+      "title": "White",
+      "color": "#ffff",
+      "link": "/quiz"
     }
   ]
 }
