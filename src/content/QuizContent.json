@@ -1,0 +1,31 @@
+{
+  "title": "This is the quiz page",
+  "text": "This quiz page needs a new content block",
+  "button": [
+    {
+      "title": "placeholder",
+      "color": "#FFFF00",
+      "link": "/quiz"
+    },
+    {
+      "title": "placeholder",
+      "color": "#CD853F",
+      "link": "/quiz"
+    }, 
+    {
+      "title": "placeholder",
+      "color": "#654321",
+      "link": "/quiz"
+    }, 
+    {
+      "title": "placeholder",
+      "color": "#ffff",
+      "link": "/quiz"
+    }, 
+    {
+      "title": "placeholder",
+      "color": "#ffff",
+      "link": "/quiz"
+    }
+  ]
+}
