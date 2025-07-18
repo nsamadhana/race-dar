@@ -1,6 +1,6 @@
 {
-  "title": "Racedar",
-  "text": "Choose a color and start playing!",
+  "title": "Choose a color and start playing!",
+  "text": "There can only be one...",
   "button": [
     {
       "title": "Yellow",
@@ -19,7 +19,7 @@
     }, 
     {
       "title": "Black",
-      "color": "#ffff",
+      "color": "#000000",
       "link": "/quiz"
     }, 
     {
