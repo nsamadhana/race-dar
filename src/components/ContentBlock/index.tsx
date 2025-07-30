@@ -130,8 +130,10 @@ const ContentBlock = ({
 }: ContentBlockProps) => {
   const history = useHistory(); // Add useHistory hook
 
-  const handleButtonClick = (link: string) => {
-    history.push(link); // Navigate to the specified link
+  // Function to handle button click. 
+  // Navigates to link and passees choices as state
+  const handleButtonClick = (link: string, choices: string[]) => {
+    history.push(link, {choices}); 
   };
 
   return (
@@ -157,7 +159,7 @@ const ContentBlock = ({
                       <Button
                         key={id}
                         color={item.color}
-                        onClick={() => handleButtonClick(item.link? item.link : "/")}>
+                        onClick={() => handleButtonClick(item.link? item.link : "/", item.choices? item.choices: ["choice_1", "choice_2"])}>
                       
                         {t(item.title)}
                       </Button>
