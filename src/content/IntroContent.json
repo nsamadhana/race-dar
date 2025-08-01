@@ -6,31 +6,36 @@
       "title": "Yellow",
       "color": "#FFFF00",
       "link": "/quiz",
-      "choices": ["China", "Japan", "Korea", "Vietnam"]
+      "choices": ["China", "Japan", "Korea", "Vietnam"],
+      "category": "yellow"
     },
     {
       "title": "Brown1",
       "color": "#CD853F",
       "link": "/quiz",
-      "choices": ["Mexico", "Brazil", "Filipino", "Colombia"]
+      "choices": ["Mexico", "Brazil", "Filipino", "Colombia"],
+      "category": "brown_1"
     }, 
     {
       "title": "Brown2",
       "color": "#654321",
       "link": "/quiz",
-      "choices": ["Iran", "Afghanistan", "Pakistan", "Iraq"]
+      "choices": ["Iran", "Afghanistan", "Pakistan", "Iraq"],
+      "category": "brown_2"
     }, 
     {
       "title": "Black",
       "color": "#000000",
       "link": "/quiz",
-      "choices":["Nigeria", "Sudan", "Kenya", "Zimbabwe"]
+      "choices":["Nigeria", "Sudan", "Kenya", "Zimbabwe"],
+      "category": "black"
     }, 
     {
       "title": "White",
       "color": "#ffff",
       "link": "/quiz",
-      "choices": ["England", "Russian", "French", " German"]
+      "choices": ["England", "Russian", "French", " German"],
+      "category": "white"
     }
   ]
 }
