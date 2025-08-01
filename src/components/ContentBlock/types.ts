@@ -14,12 +14,14 @@ export interface ContentBlockProps {
         color?: undefined;
         link? : string;
         choices?: string[];
+        category?: string; 
       }
     | {
         title: string;
         color: string;
         link: string;
         choices: string[];
+        category?: string;
       }
   )[];
   t: TFunction;

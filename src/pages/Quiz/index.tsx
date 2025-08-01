@@ -1,36 +1,59 @@
-import { lazy } from "react";
-import QuizContent from "../../content/QuizContent.json";
+import { lazy, useEffect, useState } from "react";
 import QuizBlock from "../../components/QuizBlock";
 import { useLocation } from "react-router-dom";
-
 
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 
-const Block = lazy(() => import("../../components/QuizBlock"));
-
 type LocationState = {
-  choices?: string[]; // Define choices as an optional array of strings
+  choices?: string[]; // Array of answer choices
+  category?: string;  // e.g. "yellow"
 };
+
+type ImageEntry = {
+  url: string;
+  ethnicity?: string;
+};
+
 const Quiz = () => {
   const location = useLocation<LocationState>();
-  const { choices } = location.state || {};
+  const { choices = [], category = "default" } = location.state || {};
+  const [imageData, setImageData] = useState<ImageEntry | null>(null);
+  console.log("Received state from navigation:", location.state);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const res = await fetch("https://racedar-images.s3.amazonaws.com/index.json");
+        const data = await res.json();
+        const images: ImageEntry[] = data[category];
+        if (images && images.length > 0) {
+          const randomIndex = Math.floor(Math.random() * images.length);
+          setImageData(images[randomIndex]);
+        }
+      } catch (err) {
+        console.error("Failed to load index.json:", err);
+      }
+    };
+
+    fetchImages();
+  }, [category]);
 
   const handleSubmit = (selectedChoice: string | null) => {
     console.log("Selected choice:", selectedChoice);
   };
-  // TODO: Replace the hardcoded score with dynamic score update 
+
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>0/10</h1> 
-      {choices ? (
+      <h1 style={{ textAlign: "center" }}>0/10</h1>
+      {choices && imageData ? (
         <QuizBlock
-          image="/img/icons/fidel.png" // TODO: Replace this with dyanmic image source
+          image={imageData.url} // Dynamically loaded S3 image
           choices={choices}
           onSubmit={handleSubmit}
         />
       ) : (
-        <p>No choices available</p>
+        <p>Loading quiz...</p>
       )}
     </div>
   );
