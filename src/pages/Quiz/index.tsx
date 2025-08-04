@@ -60,14 +60,11 @@ const Quiz = () => {
 
     if (isCorrect) {
       setScore(prev => prev + 1);
-      console.log("Correct answer! Current score:", score + 1); 
     }
 
     if (currentImageIndex < totalQuestions - 1) {
       setCurrentImageIndex(prev => prev + 1);
     } else {
-      console.log("Quiz complete");
-      // TODO: Navigate to results page and show final score
       history.push({
         pathname: "/result",
         state: { score, category, choices },

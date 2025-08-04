@@ -9,8 +9,6 @@ type LocationState = {
 
 const Result = () => {
   const location = useLocation<LocationState>();
-  console.log("Location state:", location.state);
-  console.log("location state score: ", location.state.score); 
   const { score = 0, category = "default", choices = [] } = location.state || {}; 
 
   return (
