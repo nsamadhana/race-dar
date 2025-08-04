@@ -73,7 +73,7 @@ const Quiz = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>{score}/{totalQuestions}</h1>
+      <h1 style={{ textAlign: "center" }}>Score: {score}</h1>
       {choices.length > 0 && currentImage ? (
         <QuizBlock
           image={currentImage.url}
