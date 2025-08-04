@@ -1,6 +1,7 @@
 import { lazy, useEffect, useState } from "react";
 import QuizBlock from "../../components/QuizBlock";
 import { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
@@ -17,6 +18,7 @@ type ImageEntry = {
 
 const Quiz = () => {
   const location = useLocation<LocationState>();
+  const history = useHistory();
   const { choices = [], category = "default" } = location.state || {};
 
   const [imageList, setImageList] = useState<ImageEntry[]>([]);
@@ -58,14 +60,15 @@ const Quiz = () => {
 
     if (isCorrect) {
       setScore(prev => prev + 1);
-      console.log("Correct answer! Current score:", score + 1); 
     }
 
     if (currentImageIndex < totalQuestions - 1) {
       setCurrentImageIndex(prev => prev + 1);
     } else {
-      console.log("Quiz complete");
-      // TODO: Navigate to results page and show final score
+      history.push({
+        pathname: "/result",
+        state: { score, category, choices },
+      })
     }
   };
 

@@ -9,6 +9,11 @@ const routes = [
     exact: true,
     component: "Quiz",
   },
+  {
+    path: ["/result"],
+    exact: true,
+    component: "Result",
+  },
 ];
 
 export default routes;
