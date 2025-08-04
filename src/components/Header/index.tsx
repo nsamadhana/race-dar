@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Row, Col, Drawer } from "antd";
 import { withTranslation, TFunction } from "react-i18next";
+import { useLocation } from "react-router-dom";
 import Container from "../../common/Container";
 import { SvgIcon } from "../../common/SvgIcon";
 import { Button } from "../../common/Button";
@@ -18,6 +19,8 @@ import {
 
 const Header = ({ t }: { t: TFunction }) => {
   const [visible, setVisibility] = useState(false);
+  const location = useLocation();
+  const isQuizPage = location.pathname === "/quiz";
 
   const toggleButton = () => {
     setVisibility(!visible);
@@ -33,12 +36,16 @@ const Header = ({ t }: { t: TFunction }) => {
     };
     return (
       <>
-        <CustomNavLinkSmall onClick={() => scrollTo("about")}>
-          <Span>{t("About")}</Span>
-        </CustomNavLinkSmall>
-        <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
-          <Span>{t("Mission")}</Span>
-        </CustomNavLinkSmall>
+        {!isQuizPage && (
+          <>
+            <CustomNavLinkSmall onClick={() => scrollTo("about")}>
+              <Span>{t("About")}</Span>
+            </CustomNavLinkSmall>
+            <CustomNavLinkSmall onClick={() => scrollTo("mission")}>
+              <Span>{t("Mission")}</Span>
+            </CustomNavLinkSmall>
+          </>
+        )}
         {/* <CustomNavLinkSmall onClick={() => scrollTo("product")}>
           <Span>{t("Product")}</Span>
         </CustomNavLinkSmall>
