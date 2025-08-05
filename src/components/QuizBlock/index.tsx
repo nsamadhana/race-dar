@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+// Button color constants for quiz choices
+const QUIZ_BUTTON_COLORS = {
+  SELECTED: "#87CEEB", // Blue - indicates user's current selection
+  UNSELECTED: "#D3D3D3", // Light gray - default state for unselected choices
+} as const;
+
 interface QuizBlockProps {
   image: string; // URL of the image
   choices: string[]; // Array of choices
@@ -35,7 +41,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
             style={{
               margin: "20px",
               padding: "10px 20px",
-              backgroundColor: selectedChoice === choice ? "#4CAF50" : "#f0f0f0",
+              backgroundColor: selectedChoice === choice ? QUIZ_BUTTON_COLORS.SELECTED : QUIZ_BUTTON_COLORS.UNSELECTED,
               border: "3px solid #ccc",
               borderRadius: "5px",
               cursor: "pointer",
