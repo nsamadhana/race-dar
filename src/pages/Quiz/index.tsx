@@ -60,7 +60,7 @@ const Quiz = () => {
     
     // Don't proceed if a choice is not selected
     if (!selectedChoice) {
-      console.log("No choice selected"); 
+      alert("Select an answer before submitting!");
       return; 
     }
 
