@@ -26,14 +26,14 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <img src={image} alt="Quiz" 
-        style={{ 
+      <img src={image} alt="Quiz"
+        style={{
           width: "600px", // Set a fixed width
           height: "500px", // Set a fixed height
-         objectFit: "cover", // Ensures the image fills the area while maintaining aspect ratio
+          objectFit: "cover", // Ensures the image fills the area while maintaining aspect ratio
           borderRadius: "10px", // Optional: Add rounded corners
           border: "2px solid #ccc", // Optional: Add a border
-          }} />
+        }} />
       <div style={{ marginTop: "20px" }}>
         {choices.map((choice, index) => (
           <button
@@ -46,7 +46,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
               border: "3px solid #ccc",
               borderRadius: "5px",
               cursor: "pointer",
-              minWidth: "150px", 
+              minWidth: "150px",
               fontSize: "24px",
             }}
           >
@@ -64,7 +64,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
           border: "none",
           borderRadius: "5px",
           cursor: "pointer",
-          minWidth: "150px", 
+          minWidth: "150px",
           fontSize: "24px",
         }}
       >
