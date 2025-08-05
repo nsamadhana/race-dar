@@ -20,7 +20,7 @@ import {
 const Header = ({ t }: { t: TFunction }) => {
   const [visible, setVisibility] = useState(false);
   const location = useLocation();
-  const isQuizPage = location.pathname === "/quiz";
+  const isHomePage = location.pathname === "/";
 
   const toggleButton = () => {
     setVisibility(!visible);
@@ -36,7 +36,7 @@ const Header = ({ t }: { t: TFunction }) => {
     };
     return (
       <>
-        {!isQuizPage && (
+        {isHomePage && (
           <>
             <CustomNavLinkSmall onClick={() => scrollTo("about")}>
               <Span>{t("About")}</Span>
