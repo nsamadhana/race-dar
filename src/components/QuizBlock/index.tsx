@@ -21,6 +21,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
 
   const handleSubmit = () => {
     onSubmit(selectedChoice);
+    setSelectedChoice(null); // Reset selection for next question
   };
 
   return (
