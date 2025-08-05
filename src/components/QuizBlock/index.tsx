@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 
+// Button color constants for quiz choices
+const QUIZ_BUTTON_COLORS = {
+  SELECTED: "#87CEEB", // Blue - indicates user's current selection
+  UNSELECTED: "#D3D3D3", // Light gray - default state for unselected choices
+} as const;
+
 interface QuizBlockProps {
   image: string; // URL of the image
   choices: string[]; // Array of choices
@@ -15,18 +21,19 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
 
   const handleSubmit = () => {
     onSubmit(selectedChoice);
+    setSelectedChoice(null); // Reset selection for next question
   };
 
   return (
     <div style={{ textAlign: "center" }}>
-      <img src={image} alt="Quiz" 
-        style={{ 
+      <img src={image} alt="Quiz"
+        style={{
           width: "600px", // Set a fixed width
           height: "500px", // Set a fixed height
-         objectFit: "cover", // Ensures the image fills the area while maintaining aspect ratio
+          objectFit: "cover", // Ensures the image fills the area while maintaining aspect ratio
           borderRadius: "10px", // Optional: Add rounded corners
           border: "2px solid #ccc", // Optional: Add a border
-          }} />
+        }} />
       <div style={{ marginTop: "20px" }}>
         {choices.map((choice, index) => (
           <button
@@ -35,11 +42,11 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
             style={{
               margin: "20px",
               padding: "10px 20px",
-              backgroundColor: selectedChoice === choice ? "#4CAF50" : "#f0f0f0",
+              backgroundColor: selectedChoice === choice ? QUIZ_BUTTON_COLORS.SELECTED : QUIZ_BUTTON_COLORS.UNSELECTED,
               border: "3px solid #ccc",
               borderRadius: "5px",
               cursor: "pointer",
-              minWidth: "150px", 
+              minWidth: "150px",
               fontSize: "24px",
             }}
           >
@@ -57,7 +64,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
           border: "none",
           borderRadius: "5px",
           cursor: "pointer",
-          minWidth: "150px", 
+          minWidth: "150px",
           fontSize: "24px",
         }}
       >
