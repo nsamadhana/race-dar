@@ -57,6 +57,12 @@ const Quiz = () => {
   const handleSubmit = (selectedChoice: string | null) => {
     const currentImage = imageList[currentImageIndex];
     const isCorrect = selectedChoice === currentImage?.ethnicity;
+    
+    // Don't proceed if a choice is not selected
+    if (!selectedChoice) {
+      console.log("No choice selected"); 
+      return; 
+    }
 
     if (isCorrect) {
       setScore(prev => prev + 1);
