@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Button color constants for quiz choices
 const QUIZ_BUTTON_COLORS = {
@@ -10,14 +10,26 @@ interface QuizBlockProps {
   image: string; // URL of the image
   choices: string[]; // Array of choices
   onSubmit: (selectedChoice: string | null) => void; // Submit handler
+  feedbackResult?: 'correct' | 'incorrect' | null; // Visual feedback state
 }
 
-const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
+const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit, feedbackResult }) => {
   const [selectedChoice, setSelectedChoice] = useState<string | null>(null);
+  const [showFeedback, setShowFeedback] = useState(false);
 
   const handleChoiceClick = (choice: string) => {
     setSelectedChoice(choice);
   };
+
+  useEffect(() => {
+    if (feedbackResult) {
+      setShowFeedback(true);
+      const timer = setTimeout(() => {
+        setShowFeedback(false);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [feedbackResult]);
 
   const handleSubmit = () => {
     onSubmit(selectedChoice);
@@ -26,14 +38,36 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit }) => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <img src={image} alt="Quiz"
-        style={{
-          width: "600px", // Set a fixed width
-          height: "500px", // Set a fixed height
-          objectFit: "cover", // Ensures the image fills the area while maintaining aspect ratio
-          borderRadius: "10px", // Optional: Add rounded corners
-          border: "2px solid #ccc", // Optional: Add a border
-        }} />
+      <div style={{
+        position: "relative",
+        display: "inline-block",
+        borderRadius: "10px",
+        overflow: "hidden"
+      }}>
+        <img src={image} alt="Quiz"
+          style={{
+            width: "600px", // Set a fixed width
+            height: "500px", // Set a fixed height
+            objectFit: "cover", // Ensures the image fills the area while maintaining aspect ratio
+            borderRadius: "10px", // Optional: Add rounded corners
+            border: "2px solid #ccc",
+            display: "block",
+          }} />
+        {showFeedback && (
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: feedbackResult === 'correct'
+              ? 'rgba(76, 175, 80, 0.4)'
+              : 'rgba(244, 67, 54, 0.4)',
+            borderRadius: "10px",
+            transition: "opacity 0.4s ease-in-out",
+          }} />
+        )}
+      </div>
       <div style={{ marginTop: "20px" }}>
         {choices.map((choice, index) => (
           <button

@@ -24,6 +24,7 @@ const Quiz = () => {
   const [imageList, setImageList] = useState<ImageEntry[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [score, setScore] = useState(0);
+  const [feedbackResult, setFeedbackResult] = useState<'correct' | 'incorrect' | null>(null);
   const totalQuestions = 10;
 
   // Helper: Shuffle and pick 10 images
@@ -64,18 +65,27 @@ const Quiz = () => {
       return; 
     }
 
+    // Show feedback
+    setFeedbackResult(isCorrect ? 'correct' : 'incorrect');
+
     if (isCorrect) {
       setScore(prev => prev + 1);
     }
 
-    if (currentImageIndex < totalQuestions - 1) {
-      setCurrentImageIndex(prev => prev + 1);
-    } else {
-      history.push({
-        pathname: "/result",
-        state: { score, category, choices },
-      })
-    }
+    // Delay before proceeding to next question
+    setTimeout(() => {
+      setFeedbackResult(null);
+      
+      if (currentImageIndex < totalQuestions - 1) {
+        setCurrentImageIndex(prev => prev + 1);
+      } else {
+        const finalScore = isCorrect ? score + 1 : score;
+        history.push({
+          pathname: "/result",
+          state: { score: finalScore, category, choices },
+        });
+      }
+    }, 600);
   };
 
   const currentImage = imageList[currentImageIndex];
@@ -88,6 +98,7 @@ const Quiz = () => {
           image={currentImage.url}
           choices={choices}
           onSubmit={handleSubmit}
+          feedbackResult={feedbackResult}
         />
       ) : (
         <p>Loading quiz...</p>
