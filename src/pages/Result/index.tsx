@@ -58,14 +58,16 @@ const Result = () => {
         style={{
           marginTop: "20px",
           padding: "12px 24px",
-          backgroundColor: "#007BFF",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
+          backgroundColor: "#2e186a",
+          color: "orange",
+          border: "1px solid #edf3f5",
+          borderRadius: "4px",
           cursor: "pointer",
-          fontSize: "18px",
+          fontSize: "20px",
           fontWeight: "bold",
+          boxShadow: "0 16px 30px rgb(23 31 114 / 20%)"
         }}
+        
       >
         Play Again
       </button>
