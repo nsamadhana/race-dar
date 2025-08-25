@@ -16,9 +16,31 @@ const Result = () => {
     history.push("/");
   }; 
 
+    // Determines text to display based on the score
+    const getResultText = () => {
+      if (score === 10) {
+        return "You don't see color. You are the racedar!";
+      } else if (score >= 7) {
+        return "Wonderful! Someone is an ally I see!";
+      } else if (score >= 4) {
+        return "Not bad, you could use additional DEI training.";
+      } else if (score >= 1) {
+        return "You are a liability at the party.";
+      } else {
+        return "Awful, you should be ashamed of yourself.";
+      }
+    };
+
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>Quiz Results</h1>
+      <h2>
+        You scored {score} out of 10!
+      </h2>
+
+      <h3>
+        {getResultText()}
+      </h3>
+
       <img
         src="/img/result-image.png" 
         alt="Result"
@@ -30,9 +52,7 @@ const Result = () => {
           marginBottom: "20px",
         }}
       />
-      <p>
-        You scored {score} out of 10!
-      </p>
+
       <button
         onClick={handlePlayAgain}
         style={{
