@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 // Defines the type for location state which is passed from the Quiz page
 type LocationState = {
@@ -9,7 +9,12 @@ type LocationState = {
 
 const Result = () => {
   const location = useLocation<LocationState>();
-  const { score = 0, category = "default", choices = [] } = location.state || {}; 
+  const history = useHistory();
+  const { score = 0, category = "default", choices = [] } = location.state || {};
+
+  const handlePlayAgain = () => {
+    history.push("/");
+  }; 
 
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
@@ -28,6 +33,22 @@ const Result = () => {
       <p>
         You scored {score} out of 10!
       </p>
+      <button
+        onClick={handlePlayAgain}
+        style={{
+          marginTop: "20px",
+          padding: "12px 24px",
+          backgroundColor: "#007BFF",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          fontSize: "18px",
+          fontWeight: "bold",
+        }}
+      >
+        Play Again
+      </button>
     </div>
   );
 };
