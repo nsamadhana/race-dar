@@ -37,10 +37,6 @@ const Result = () => {
         You scored {score} out of 10!
       </h2>
 
-      <h3>
-        {getResultText()}
-      </h3>
-
       <img
         src="/img/result-image.png" 
         alt="Result"
@@ -52,6 +48,10 @@ const Result = () => {
           marginBottom: "20px",
         }}
       />
+
+      <p style={{ fontSize: "18px", fontWeight: "bold", marginTop: "20px" }}>
+        {getResultText()}
+      </p>
 
       <button
         onClick={handlePlayAgain}
