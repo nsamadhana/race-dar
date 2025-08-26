@@ -1,4 +1,5 @@
 import { useLocation, useHistory } from "react-router-dom";
+import { lazy, useEffect, useState } from "react";
 
 // Defines the type for location state which is passed from the Quiz page
 type LocationState = {
@@ -12,24 +13,51 @@ const Result = () => {
   const history = useHistory();
   const { score = 0, category = "default", choices = [] } = location.state || {};
 
+  const [resultImages, setResultImages] = useState<{ url: string }[]>([]);
+
   const handlePlayAgain = () => {
     history.push("/");
   }; 
 
-    // Determines text to display based on the score
-    const getResultText = () => {
-      if (score === 10) {
-        return "You don't see color. You are the racedar!";
-      } else if (score >= 7) {
-        return "Wonderful! Someone is an ally I see!";
-      } else if (score >= 4) {
-        return "Not bad, you could use additional DEI training.";
-      } else if (score >= 1) {
-        return "You are a liability at the party.";
-      } else {
-        return "Awful, you should be ashamed of yourself.";
+  // Fetch results images 
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const res = await fetch("https://racedar-images.s3.amazonaws.com/results_index.json");
+        const data = await res.json();
+        setResultImages(data["results"] || []); 
+        console.log("Fetched result images:", data["results"]);
+      } catch (err) {
+        console.error("Failed to fetch images:", err);
       }
     };
+
+    fetchImages();
+  }, []);
+
+
+    // Determines text to display based on the score
+    const getResultData = () => {
+      if (score === 10) {
+        return { text: "You don't see color. You are the racedar!", index: 0 };
+      } else if (score >= 7) {
+        return { text: "Wonderful! Someone is an ally I see!", index: 1 };
+      } else if (score >= 4) {
+        return { text: "Not bad, you could use additional DEI training.", index: 2 };
+      } else if (score >= 1) {
+        return { text: "You are a liability at the party.", index: 3 };
+      } else {
+        return { text: "Awful, you should be ashamed of yourself.", index: 4 };
+      }
+    };
+
+  
+  // Retrieve text and image based on user score
+  const { text, index } = getResultData(); 
+  const imageData = resultImages[index] || "/img/default-result.png";
+  console.log("Displaying result image URL:", imageData, "with index:", index);
+  const imageUrl = imageData.url;
+
 
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
@@ -38,19 +66,19 @@ const Result = () => {
       </h2>
 
       <img
-        src="/img/result-image.png" 
-        alt="Result"
+        src={imageUrl}
+        alt="Results"
         style={{
-          width: "300px",
-          height: "300px",
+          width: "400px",
+          height: "400px",
           objectFit: "cover",
           borderRadius: "10px",
           marginBottom: "20px",
         }}
       />
 
-      <p style={{ fontSize: "18px", fontWeight: "bold", marginTop: "20px" }}>
-        {getResultText()}
+      <p style={{ fontSize: "22px", fontWeight: "bold", marginTop: "20px" }}>
+        {text}
       </p>
 
       <button
