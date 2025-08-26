@@ -55,9 +55,8 @@ const Result = () => {
   // Retrieve text and image based on user score
   const { text, index } = getResultData(); 
   const imageData = resultImages[index] || "/img/default-result.png";
-  console.log("Displaying result image URL:", imageData, "with index:", index);
   const imageUrl = imageData.url;
-
+  console.log("Displaying result image URL:", imageUrl);
 
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
@@ -69,8 +68,8 @@ const Result = () => {
         src={imageUrl}
         alt="Results"
         style={{
-          width: "400px",
-          height: "400px",
+          width: "500px",
+          height: "500px",
           objectFit: "cover",
           borderRadius: "10px",
           marginBottom: "20px",

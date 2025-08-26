@@ -89,7 +89,6 @@ const Quiz = () => {
   };
 
   const currentImage = imageList[currentImageIndex];
-
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Score: {score}</h1>
