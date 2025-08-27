@@ -1,6 +1,6 @@
 {
   "title": "Choose a color and start playing!",
-  "text": "There can only be one...",
+  "text": "Become the racedar!",
   "button": [
     {
       "title": "Yellow",
@@ -34,7 +34,7 @@
       "title": "White",
       "color": "#ffff",
       "link": "/quiz",
-      "choices": ["England", "Russian", "French", " German"],
+      "choices": ["England", "Russia", "France", " Germany"],
       "category": "white"
     }
   ]
