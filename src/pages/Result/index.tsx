@@ -68,13 +68,6 @@ const Result = () => {
       <img
         src={imageUrl}
         alt="Results"
-        style={{
-          width: "400px",
-          height: "400px",
-          objectFit: "cover",
-          borderRadius: "10px",
-          marginBottom: "20px",
-        }}
       />
 
       <p style={{ fontSize: "22px", fontWeight: "bold", marginTop: "20px" }}>
