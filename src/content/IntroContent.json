@@ -34,7 +34,7 @@
       "title": "White",
       "color": "#ffff",
       "link": "/quiz",
-      "choices": ["England", "Russia", "France", " Germany"],
+      "choices": ["England", "Russia", "France", "Germany"],
       "category": "white"
     }
   ]

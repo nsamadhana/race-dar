@@ -27,6 +27,11 @@ const FLAG_EMOJIS: Record<string, string> = {
   Iraq: "🇮🇶",
   Iran: "🇮🇷",
   Afghanistan: "🇦🇫",
+
+  Germany: "🇩🇪",
+  Russia: "🇷🇺",
+  France: "🇫🇷",
+  England: "🇬🇧", 
 };
 
 
