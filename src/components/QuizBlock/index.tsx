@@ -39,9 +39,19 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit, feedbac
   return (
     <div style={{ textAlign: "center" }}>
       <div style={{
+        // position: "relative",
+        // display: "inline-block",
+        // borderRadius: "10px",
+        // overflow: "hidden"
         position: "relative",
         display: "inline-block",
-        borderRadius: "10px",
+        backgroundColor: "#fff", // Card background color
+        borderRadius: "10px", // Rounded corners
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+        padding: "20px", // Inner padding
+        maxWidth: "650px", // Limit the card width
+        width: "100%", // Make it responsive
+        textAlign: "center",
         overflow: "hidden"
       }}>
         <img src={image} alt="Quiz"
@@ -52,6 +62,7 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit, feedbac
             borderRadius: "10px", // Optional: Add rounded corners
             border: "2px solid #ccc",
             display: "block",
+            margin: "0 auto",
           }} />
         {showFeedback && (
           <div style={{
