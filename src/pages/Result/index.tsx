@@ -82,21 +82,34 @@ const Result = () => {
       </p>
 
       <button
-        onClick={handlePlayAgain}
-        style={{
-          marginTop: "20px",
-          padding: "12px 24px",
-          backgroundColor: "#007BFF",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          fontSize: "18px",
-          fontWeight: "bold",
-        }}
-      >
-        Play Again
-      </button>
+  onClick={handlePlayAgain}
+  style={{
+    marginTop: "10px",
+    padding: "10px 20px",
+    backgroundColor: "#2e186a", 
+    color: "orange",
+    border: "1px solid #edf3f5",
+    borderRadius: "4px", 
+    cursor: "pointer",
+    minWidth: "150px",
+    fontSize: "22px",
+    fontWeight: "bold",
+    boxShadow: "0 16px 30px rgb(23 31 114 / 20%)", 
+    transition: "all 0.3s ease-in-out",
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.backgroundColor = "rgb(255, 130, 92)";
+    e.currentTarget.style.color = "#fff";
+    e.currentTarget.style.border = "1px solid rgb(255, 130, 92)"; 
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.backgroundColor = "#2e186a"; 
+    e.currentTarget.style.color = "orange"; 
+    e.currentTarget.style.border = "1px solid #edf3f5"; 
+  }}
+>
+  Play Again
+</button>
     </div>
   );
 };
