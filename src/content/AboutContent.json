@@ -1,6 +1,6 @@
 {
   "title": "Diversity, Equity, and Inclusion",
-  "text": "Racedar is a DEI social awareness tool designed to expose internal biases regarding race and color.",
+  "text": "Racedar is a DEI social awareness tool designed to expose internal biases regarding race perception.",
   "section": [
     {
       "title": "Why Racedar?",
@@ -9,7 +9,7 @@
     },
     {
       "title": "Is this a joke?",
-      "content": "No this is very serious.",
+      "content": "No this is super serious.",
       "icon": "notes.svg"
     }
   ]
