@@ -51,12 +51,24 @@ export const ButtonWrapper = styled("div")`
   display: flex;
   justify-content: space-between;
   max-width: 100%;
+  margin: 0 auto;
 
   @media screen and (min-width: 1024px) {
     max-width: 80%;
   }
 
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
   button:last-child {
     margin-left: 20px;
+    
+    @media only screen and (max-width: 480px) {
+      margin-left: 0;
+    }
   }
 `;

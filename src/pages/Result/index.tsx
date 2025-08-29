@@ -1,17 +1,15 @@
 import { useLocation, useHistory } from "react-router-dom";
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 // Defines the type for location state which is passed from the Quiz page
 type LocationState = {
   score: number; 
-  category?: string; 
-  choices?: string[];
 }
 
 const Result = () => {
   const location = useLocation<LocationState>();
   const history = useHistory();
-  const { score = 0, category = "default", choices = [] } = location.state || {};
+  const { score = 0 } = location.state || {};
 
   const [resultImages, setResultImages] = useState<{ url: string }[]>([]);
 
@@ -60,8 +58,8 @@ const Result = () => {
 
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <h2>
+    <div style={{ textAlign: "center", padding: "clamp(10px, 3vw, 20px)" }}>
+      <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)", margin: "0 0 clamp(15px, 3vw, 20px) 0" }}>
         You scored {score} out of 10!
       </h2>
 
@@ -69,30 +67,35 @@ const Result = () => {
         src={imageUrl}
         alt="Results"
         style={{
-          width: "600px",
-          height: "600px",
+          width: "clamp(300px, 80vw, 600px)",
+          height: "clamp(300px, 80vw, 600px)",
           objectFit: "contain",
           borderRadius: "10px",
-          marginBottom: "20px",
+          marginBottom: "clamp(15px, 3vw, 20px)",
         }}
       />
 
-      <p style={{ fontSize: "22px", fontWeight: "bold", marginTop: "20px" }}>
+      <p style={{ 
+        fontSize: "clamp(16px, 4vw, 22px)", 
+        fontWeight: "bold", 
+        marginTop: "clamp(15px, 3vw, 20px)",
+        padding: "0 10px"
+      }}>
         {text}
       </p>
 
       <button
   onClick={handlePlayAgain}
   style={{
-    marginTop: "10px",
-    padding: "10px 20px",
+    marginTop: "clamp(10px, 3vw, 20px)",
+    padding: "clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px)",
     backgroundColor: "#2e186a", 
     color: "orange",
     border: "1px solid #edf3f5",
     borderRadius: "4px", 
     cursor: "pointer",
-    minWidth: "150px",
-    fontSize: "22px",
+    minWidth: "clamp(120px, 25vw, 150px)",
+    fontSize: "clamp(16px, 4vw, 22px)",
     fontWeight: "bold",
     boxShadow: "0 16px 30px rgb(23 31 114 / 20%)", 
     transition: "all 0.3s ease-in-out",

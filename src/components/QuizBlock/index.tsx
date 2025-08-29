@@ -73,16 +73,17 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit, feedbac
         backgroundColor: "#fff", 
         borderRadius: "10px", 
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", 
-        padding: "20px",
+        padding: "clamp(10px, 3vw, 20px)",
         maxWidth: "650px", 
-        width: "100%", 
+        width: "90%", 
         textAlign: "center",
         overflow: "hidden"
       }}>
         <img src={image} alt="Quiz"
           style={{
-            width: "600px", 
-            height: "500px",
+            width: "100%", 
+            maxWidth: "600px",
+            height: "clamp(300px, 50vw, 500px)",
             objectFit: "cover",
             borderRadius: "10px", 
             border: "2px solid #ccc",
@@ -110,14 +111,14 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit, feedbac
             key={index}
             onClick={() => handleChoiceClick(choice)}
             style={{
-              margin: "20px",
-              padding: "10px 20px",
+              margin: "clamp(10px, 2vw, 20px)",
+              padding: "clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px)",
               backgroundColor: selectedChoice === choice ? QUIZ_BUTTON_COLORS.SELECTED : QUIZ_BUTTON_COLORS.UNSELECTED,
               border: "1px solid #edf3f5",
               borderRadius: "4px",
               cursor: "pointer",
-              minWidth: "150px",
-              fontSize: "24px",
+              minWidth: "clamp(120px, 25vw, 150px)",
+              fontSize: "clamp(16px, 4vw, 24px)",
               boxShadow: "0 16px 30px rgb(23 31 114 / 20%)",
               transition: "all 0.3s ease-in-out",
             }}
@@ -139,15 +140,15 @@ const QuizBlock: React.FC<QuizBlockProps> = ({ image, choices, onSubmit, feedbac
       <button
         onClick={handleSubmit}
         style={{
-          marginTop: "20px",
-          padding: "10px 20px",
+          marginTop: "clamp(15px, 3vw, 20px)",
+          padding: "clamp(8px, 2vw, 10px) clamp(15px, 4vw, 20px)",
           backgroundColor: "#2e186a",
           color: "orange",
           border: "1px solid #edf3f5",
           borderRadius: "4px",
           cursor: "pointer",
-          minWidth: "150px",
-          fontSize: "24px",
+          minWidth: "clamp(120px, 25vw, 150px)",
+          fontSize: "clamp(16px, 4vw, 24px)",
           boxShadow: "0 16px 30px rgb(23 31 114 / 20%)",
           transition: "all 0.3s ease-in-out",
         }}
