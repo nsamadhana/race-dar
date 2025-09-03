@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 // Defines the type for location state which is passed from the Quiz page
 type LocationState = {
   score: number; 
+  category: string; 
 }
 
 const Result = () => {
   const location = useLocation<LocationState>();
+  console.log("Location state:", location.state);
   const history = useHistory();
-  const { score = 0 } = location.state || {};
+  const { score = 0, category = "default" } = location.state || {};
 
   const [resultImages, setResultImages] = useState<{ url: string }[]>([]);
 
@@ -60,7 +62,7 @@ const Result = () => {
   return (
     <div style={{ textAlign: "center", padding: "clamp(10px, 3vw, 20px)" }}>
       <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)", margin: "0 0 clamp(15px, 3vw, 20px) 0" }}>
-        You scored {score} out of 10!
+        You scored {score} out of 10 for {category}!
       </h2>
 
       <img
