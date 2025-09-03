@@ -20,7 +20,8 @@ const Quiz = () => {
   const location = useLocation<LocationState>();
   const history = useHistory();
   const { choices = [], category = "default" } = location.state || {};
-
+  
+  const [correctAnswer, setCorrectAnswer] = useState<string | null>(null);
   const [imageList, setImageList] = useState<ImageEntry[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -70,7 +71,13 @@ const Quiz = () => {
 
     if (isCorrect) {
       setScore(prev => prev + 1);
+    } else {
+      // Set the variable for the correct answer display 
+      setCorrectAnswer(currentImage?.ethnicity || null);
     }
+
+    // Set the delay value depending on correctness 
+    const delay = isCorrect ? 600 : 2500;
 
     // Delay before proceeding to next question
     setTimeout(() => {
@@ -85,14 +92,41 @@ const Quiz = () => {
           state: { score: finalScore, category, choices },
         });
       }
-    }, 600);
+    }, delay); 
   };
 
   const currentImage = imageList[currentImageIndex];
 
   return (
-    <div>
+    <div
+      style={{
+      display: "flex",
+      justifyContent: "center", // Center horizontally
+      alignItems: "center", // Center vertically (if needed)
+      flexDirection: "column", // Stack elements vertically
+      marginBottom: "20px", // Add spacing below the text
+    }}
+    >
       <h1 style={{ textAlign: "center" }}>Score: {score}</h1>
+      {feedbackResult === "incorrect" && correctAnswer && (
+      <p
+        style={{
+          textAlign: "center",
+          color: "red",
+          fontSize: "clamp(24px, 5vw, 32px)", // Larger font size for emphasis
+          fontWeight: "bold", // Bold text
+          padding: "10px", // Add padding for spacing
+          backgroundColor: "#ffe6e6", // Light red background for emphasis
+          border: "2px solid red", // Red border for focus
+          borderRadius: "8px", // Rounded corners for a modern look
+          display: "inline-block", // Prevent stretching across the screen
+          marginLeft: "auto", // Center horizontally
+          marginRight: "auto",
+        }}
+      >
+        Wrong! The correct answer is: <span style={{ textTransform: "uppercase" }}>{correctAnswer}</span>
+      </p>
+    )}
       {choices.length > 0 && currentImage ? (
         <QuizBlock
           image={currentImage.url}
