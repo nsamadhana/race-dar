@@ -104,29 +104,10 @@ const Quiz = () => {
       justifyContent: "center", // Center horizontally
       alignItems: "center", // Center vertically (if needed)
       flexDirection: "column", // Stack elements vertically
-      marginBottom: "20px", // Add spacing below the text
     }}
     >
-      <h1 style={{ textAlign: "center" }}>Score: {score}</h1>
-      {feedbackResult === "incorrect" && correctAnswer && (
-      <p
-        style={{
-          textAlign: "center",
-          color: "red",
-          fontSize: "clamp(24px, 5vw, 32px)", // Larger font size for emphasis
-          fontWeight: "bold", // Bold text
-          padding: "10px", // Add padding for spacing
-          backgroundColor: "#ffe6e6", // Light red background for emphasis
-          border: "2px solid red", // Red border for focus
-          borderRadius: "8px", // Rounded corners for a modern look
-          display: "inline-block", // Prevent stretching across the screen
-          marginLeft: "auto", // Center horizontally
-          marginRight: "auto",
-        }}
-      >
-        Wrong! The correct answer is: <span style={{ textTransform: "uppercase" }}>{correctAnswer}</span>
-      </p>
-    )}
+      <h2 style={{ textAlign: "center" }}>Score: {score}</h2>
+
       {choices.length > 0 && currentImage ? (
         <QuizBlock
           image={currentImage.url}
@@ -137,6 +118,26 @@ const Quiz = () => {
       ) : (
         <p>Loading quiz...</p>
       )}
+      {feedbackResult === "incorrect" && correctAnswer && (
+      <p
+        style={{
+          textAlign: "center",
+          color: "red",
+          fontSize: "clamp(20px, 2vw, 24px)", 
+          fontWeight: "bold", 
+          padding: "10px", 
+          backgroundColor: "#ffe6e6", 
+          border: "2px solid red", 
+          borderRadius: "8px", 
+          display: "inline-block",
+          marginLeft: "auto", 
+          marginRight: "auto",
+          marginTop: "10px"
+        }}
+      >
+        Wrong! The correct answer is: <span style={{ textTransform: "uppercase" }}>{correctAnswer}</span>
+      </p>
+    )}
     </div>
   );
 };
