@@ -21,6 +21,7 @@ const Quiz = () => {
   const history = useHistory();
   const { choices = [], category = "default" } = location.state || {};
 
+  const [correctAnswer, setCorrectAnswer] = useState<string | null>(null)
   const [imageList, setImageList] = useState<ImageEntry[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -68,9 +69,15 @@ const Quiz = () => {
     // Show feedback
     setFeedbackResult(isCorrect ? 'correct' : 'incorrect');
 
+    //Update score if correct, else set correct answer for display
     if (isCorrect) {
       setScore(prev => prev + 1);
+    } else {
+      setCorrectAnswer(currentImage.ethnicity || null);
+      console.log("Wrong answer. Correct answer was:", currentImage?.ethnicity);
     }
+
+    const delay = isCorrect? 600: 2200;
 
     // Delay before proceeding to next question
     setTimeout(() => {
@@ -85,7 +92,7 @@ const Quiz = () => {
           state: { score: finalScore, category, choices },
         });
       }
-    }, 600);
+    }, delay);
   };
 
   const currentImage = imageList[currentImageIndex];
@@ -103,6 +110,35 @@ const Quiz = () => {
       ) : (
         <p>Loading quiz...</p>
       )}
+
+      {feedbackResult === "incorrect" && correctAnswer && (
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "10px",
+            marginBottom: "10px", 
+            padding: "10px", 
+            backgroundColor: "#ffe6e6", 
+            border: "2px solid red", 
+            borderRadius: "8px", 
+            width: "90%",    
+            maxWidth: "400px", 
+            marginLeft: "auto",
+            marginRight: "auto", 
+          }}
+        >
+          <p
+            style={{
+              fontSize: "clamp(16px, 4vw, 24px)",
+              fontWeight: "bold", 
+              margin: 0, 
+            }}
+          >
+            Correct answer was: <span style={{ textTransform: "uppercase" }}>{correctAnswer}</span>
+          </p>
+        </div>
+      )}
+      
     </div>
   );
 };
