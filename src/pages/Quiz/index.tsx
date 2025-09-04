@@ -134,7 +134,7 @@ const Quiz = () => {
               margin: 0, 
             }}
           >
-            Correct answer: <span style={{ textTransform: "uppercase" }}>{correctAnswer}</span>
+            Correct answer was: <span style={{ textTransform: "uppercase" }}>{correctAnswer}</span>
           </p>
         </div>
       )}
