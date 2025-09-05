@@ -13,6 +13,8 @@ const Result = () => {
   const history = useHistory();
   const { score = 0, category = "default" } = location.state || {};
 
+  const stripped_category = category.split('_').join(" ");
+
   const [resultImages, setResultImages] = useState<{ url: string }[]>([]);
 
   const handlePlayAgain = () => {
@@ -62,7 +64,7 @@ const Result = () => {
   return (
     <div style={{ textAlign: "center", padding: "clamp(10px, 3vw, 20px)" }}>
       <h2 style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)", margin: "0 0 clamp(15px, 3vw, 20px) 0" }}>
-        You scored {score} out of 10 for {category}!
+        You scored {score} out of 10 for {stripped_category}!
       </h2>
 
       <img
