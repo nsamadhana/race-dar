@@ -99,7 +99,47 @@ const Quiz = () => {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Score: {score}</h1>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: "12px",
+          width: "90%",
+          maxWidth: "680px",
+          margin: "0 auto 16px",
+        }}
+      >
+        <h1 style={{ margin: 0 }}>Score: {score}</h1>
+
+        {feedbackResult === "incorrect" && correctAnswer && (
+          <div
+            style={{
+              margin: 0,
+              textAlign: "right",
+              padding: "8px 12px",
+              backgroundColor: "#ffe6e6",
+              border: "2px solid red",
+              borderRadius: "8px",
+              minWidth: "220px",
+              maxWidth: "60%",
+              boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
+            }}
+          >
+            <p
+              style={{
+                fontSize: "clamp(14px, 3vw, 20px)",
+                fontWeight: "bold",
+                margin: 0,
+              }}
+            >
+              Correct answer was: <span style={{ textTransform: "uppercase" }}>{correctAnswer}</span>
+            </p>
+          </div>
+        )}
+      </div>
+
       {choices.length > 0 && currentImage ? (
         <QuizBlock
           image={currentImage.url}
@@ -110,35 +150,6 @@ const Quiz = () => {
       ) : (
         <p>Loading quiz...</p>
       )}
-
-      {feedbackResult === "incorrect" && correctAnswer && (
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "10px",
-            marginBottom: "10px", 
-            padding: "10px", 
-            backgroundColor: "#ffe6e6", 
-            border: "2px solid red", 
-            borderRadius: "8px", 
-            width: "90%",    
-            maxWidth: "400px", 
-            marginLeft: "auto",
-            marginRight: "auto", 
-          }}
-        >
-          <p
-            style={{
-              fontSize: "clamp(16px, 4vw, 24px)",
-              fontWeight: "bold", 
-              margin: 0, 
-            }}
-          >
-            Correct answer was: <span style={{ textTransform: "uppercase" }}>{correctAnswer}</span>
-          </p>
-        </div>
-      )}
-      
     </div>
   );
 };
